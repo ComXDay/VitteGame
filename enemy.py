@@ -1,6 +1,4 @@
 import pygame
-
-
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, health, animation_list, x, y, speed):
         pygame.sprite.Sprite.__init__(self)

@@ -324,7 +324,7 @@ while run:
             game_over = True
 
     else:
-        draw_text('ИГРА ЗАКОНЧЕНА!', font, GREY, 300, 300)
+        draw_text('ИГРА ОКОНЧЕНА!', font, GREY, 300, 300)
         draw_text('НАЖМИТЕ "A" ЧТО БЫ НАЧАТЬ ЗАНОГО!', font, GREY, 250, 360)
         pygame.mouse.set_visible(True)
         key = pygame.key.get_pressed()
