@@ -26,6 +26,7 @@ next_level = False
 ENEMY_TIMER = 1000
 last_enemy = pygame.time.get_ticks()
 enemies_alive = 0
+enemy_speed = level * 0.5
 max_towers = 4
 TOWER_COST = 5000
 tower_positions = [
@@ -284,6 +285,7 @@ while run:
                 )
                 tower_group.add(tower)
                 castle.money -= TOWER_COST
+                TOWER_COST += 2000
         if armour_button.draw(screen):
             castle.armour()
 
@@ -291,7 +293,7 @@ while run:
             if pygame.time.get_ticks() - last_enemy > ENEMY_TIMER:
                 e = random.randint(0, len(enemy_types) - 1)
                 spawn_height = random.randint(381, 530)
-                enemy = Enemy(enemy_health[e], enemy_animations[e], -100, spawn_height, 1)
+                enemy = Enemy(enemy_health[e], enemy_animations[e], -100, spawn_height, enemy_speed)
 
                 enemy_group.add(enemy)
                 last_enemy = pygame.time.get_ticks()
@@ -302,9 +304,11 @@ while run:
             for e in enemy_group:
                 if e.alive == True:
                     enemies_alive += 1
+
             if enemies_alive == 0 and next_level == False:
                 next_level = True
                 level_reset_time = pygame.time.get_ticks()
+
 
         if next_level == True:
             draw_text('УРОВЕНЬ ПРОЙДЕН!', font_60, WHITE, 200, 300)
